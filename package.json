@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.ts",
+    "start-env": "npx ts-node index.ts && db:fresh:seed",
+    "eslint:fix": "eslint --fix",
+    "db:fresh": "sequelize db:migrate:undo:all && sequelize db:migrate",
+    "db:fresh:seed": "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
+    "db:migration:create": "sequelize migration:create --name",
+    "db:seed:create": "sequelize seed:create --name",
+    "db:migrate": "sequelize db:migrate",
+    "db:seed": "sequelize db:seed:all"
   },
   "repository": {
     "type": "git",
